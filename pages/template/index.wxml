@@ -1,0 +1,50 @@
+<template name="index">
+  <view class="">
+    <wux-notice-bar wux-class="notice-bar" icon="http://pic.fxpixels.site/index-tip-blue-icon.gif" content="微信小程序自定义组件 https://github.com/wux-weapp/wux-weapp" loop="{{true}}" />
+    <view>
+      <swiper indicator-dots="{{false}}" autoplay="{{false}}" interval="{{3000}}" duration="{{1000}}">
+        <block wx:for="{{imgUrls}}">
+          <swiper-item>
+            <image src="{{item}}" class="slide-image" width="355" height="150" />
+          </swiper-item>
+        </block>
+      </swiper>
+    </view>
+    <view class="select">
+      <view class="item" bind:tap="onSelectAddress">
+        <view class="title">
+          <wux-icon type="md-home" size="18" color="#18ACCF" />
+          <text>出发地</text>
+        </view>
+        <view class="content">
+          <text>请选择出发地</text>
+          <wux-icon type="ios-arrow-forward" size="15" color="#9696A1" />
+        </view>
+      </view>
+      <view class="item" bind:tap="onSelectAddress">
+        <view class="title">
+          <wux-icon type="md-pin" size="18" color="#18ACCF" />
+          <text>目的地</text>
+        </view>
+        <view class="content">
+          <text>请选择目的地</text>
+          <wux-icon type="ios-arrow-forward" size="15" color="#9696A1" />
+        </view>
+      </view>
+      <view class="item" bind:tap="openCalendar">
+        <view class="title">
+          <wux-icon type="md-time" size="18" color="#18ACCF" />
+          <text>出发日期</text>
+        </view>
+        <view class="content">
+          <text>请选择出发日期</text>
+          <wux-icon type="ios-arrow-forward" size="15" color="#9696A1" />
+        </view>
+      </view>
+    </view>
+
+    <view class="btn" bind:tap="onSearchBus">
+      <wux-button block type="calm">查询班次</wux-button>
+    </view>
+  </view>
+</template>

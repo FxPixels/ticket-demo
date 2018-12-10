@@ -1,19 +1,32 @@
 <!-- index.wxml -->
-
-
+<import src="../template/index" />
 <view class="container">
   <view wx:if="{{indexStatus === '0'}}">
-    
+    <template is="index" data="{{imgUrls}}"></template>
   </view>
-  <view wx:elif="{{indexStatus === '1'}}">
-    
+  <view wx:elif="{{indexStatus === '1'}}"></view>
+  <view class="spin">
+    <wux-spin nested="{{true}}" spinning="{{spinning}}" />
   </view>
+
+  <van-popup show="{{ show }}" bind:close="onPopupClose" position="bottom" close-on-click-overlay="{{true}}">
+      <view class="popup" wx:if="{{popupType === 1}}">
+        <calendar lunar="{{true}}" addon="{{'lunar'}}" weeks-type="{{'cn'}}" active-type="square"></calendar>
+      </view>
+      <view class="popup" wx:elif="{{popupType === 0}}">
+        <picker-view indicator-style="height: 50px;" style="width: 100%; height: 300rpx;" value="{{value}}" bindchange="bindChange">
+          <picker-view-column>
+            <view class="picker" wx:for="{{address}}">{{item}}</view>
+          </picker-view-column>
+        </picker-view>
+      </view>
+    </van-popup>
 
   <view class="footer">
     <wux-tabbar default-current="tab2" theme="dark" bind:change="onTabChange">
-      <wux-tabbar-item wx:for="{{title}}"  key="{{item.key}}" title="{{item.name}}">
-        <wux-icon wux-class="icon" type="ios-paw" size="22" slot="icon-on" />
-        <wux-icon wux-class="icon" type="ios-paw" size="22" slot="icon-off" />
+      <wux-tabbar-item wx:for="{{title}}" key="{{item.key}}" title="{{item.name}}">
+        <wux-icon wux-class="icon" type="{{item.icon}}" size="22" slot="icon-on" />
+        <wux-icon wux-class="icon" type="{{item.icon}}" size="22" slot="icon-off" />
       </wux-tabbar-item>
     </wux-tabbar>
   </view>
