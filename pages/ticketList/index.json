@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "wux-icon": "../../dist/wux/icon/index",
+    "wux-spin": "../../dist/wux/spin/index"
+
+
+  }
+}

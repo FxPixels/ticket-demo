@@ -1,0 +1,42 @@
+<template name="user">
+  <view>
+    <view class="avatar" style="background-image: url('http://pic.fxpixels.site/ticket_bg.png')">
+      <view>
+        <image src="http://test.fxpixels.site/Snipaste_2018-12-06_15-37-56.png"></image>
+        <text>123456</text>
+      </view>
+    </view>
+    <view class="user-oper">
+      <view>
+        <wux-icon type="md-contacts" size="22" color="#18ACCF" />
+        <text>常用乘客</text>
+      </view>
+      <view>
+        <wux-icon type="md-checkbox-outline" size="22" color="#18ACCF" />
+        <text>订单</text>
+      </view>
+    </view>
+    <view class="select other">
+      <view class="item" bind:tap="goToQuate">
+        <view class="title">
+          <wux-icon type="md-information-circle-outline" size="18" color="#18ACCF" />
+          <text>购票须知</text>
+        </view>
+        <view class="content">
+          <text></text>
+          <wux-icon type="ios-arrow-forward" size="15" color="#9696A1" />
+        </view>
+      </view>
+      <view class="item" bind:tap="goToInfo">
+        <view class="title">
+          <wux-icon type="md-paper-plane" size="18" color="#18ACCF" />
+          <text>关于</text>
+        </view>
+        <view class="content">
+          <text></text>
+          <wux-icon type="ios-arrow-forward" size="15" color="#9696A1" />
+        </view>
+      </view>
+    </view>
+  </view>
+</template>

@@ -1,4 +1,4 @@
-<template name="index">
+<template name="buy">
   <view class="">
     <wux-notice-bar wux-class="notice-bar" icon="http://pic.fxpixels.site/index-tip-blue-icon.gif" content="微信小程序自定义组件 https://github.com/wux-weapp/wux-weapp" loop="{{true}}" />
     <view>

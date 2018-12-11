@@ -1,17 +1,21 @@
 <!-- index.wxml -->
-<import src="../template/index" />
+<import src="../components/buy" />
+<import src="../components/user" />
+
 <view class="container">
   <view wx:if="{{indexStatus === '0'}}">
-    <template is="index" data="{{imgUrls}}"></template>
+    <template is="buy" data="{{imgUrls}}"></template>
   </view>
-  <view wx:elif="{{indexStatus === '1'}}"></view>
+  <view wx:elif="{{indexStatus === '1'}}">
+    <template is="user"></template>
+  </view>
   <view class="spin">
     <wux-spin nested="{{true}}" spinning="{{spinning}}" />
   </view>
 
   <van-popup show="{{ show }}" bind:close="onPopupClose" position="bottom" close-on-click-overlay="{{true}}">
       <view class="popup" wx:if="{{popupType === 1}}">
-        <calendar lunar="{{true}}" addon="{{'lunar'}}" weeks-type="{{'cn'}}" active-type="square"></calendar>
+        <calendar lunar="{{true}}" addon="{{'lunar'}}" weeks-type="{{'cn'}}" active-type="square" bind:dayClick="dataClick"></calendar>
       </view>
       <view class="popup" wx:elif="{{popupType === 0}}">
         <picker-view indicator-style="height: 50px;" style="width: 100%; height: 300rpx;" value="{{value}}" bindchange="bindChange">

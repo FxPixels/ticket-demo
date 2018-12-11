@@ -5,7 +5,7 @@ const app = getApp()
 Page({
   data: {
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    indexStatus: '0',
+    indexStatus: '1',
     title: [{
       key: '0',
       name: '购票',
@@ -16,7 +16,7 @@ Page({
       icon: 'md-person'
     }],
     imgUrls: [
-      'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg'
+      'http://pic.fxpixels.site/ticket_bg_2.jpg?v=1.2'
     ],
     spinning: false,
     show: false,
@@ -51,8 +51,11 @@ Page({
     })
   },
   onSearchBus() {
-    this.setData({
-      spinning: !this.data.spinning,
+    // this.setData({
+    //   spinning: !this.data.spinning,
+    // })
+    wx.navigateTo({
+      url: '/pages/ticketList/index'
     })
   },
   onSelectAddress(){
@@ -71,5 +74,9 @@ Page({
     this.setData({
       show: !this.data.show,
     })
+  },
+  dataClick(e){
+    console.log(e.detail)
+    this.onPopupClose()
   }
 })

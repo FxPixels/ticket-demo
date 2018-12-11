@@ -1,6 +1,7 @@
 {
   "pages":[
     "pages/index/index",
+    "pages/ticketList/index",
     "pages/logs/logs"
   ],
   "window":{

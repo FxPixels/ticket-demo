@@ -76,3 +76,53 @@ swiper image{
   text-align: center;
   font-size: 30rpx;
 }
+
+.avatar {
+  position: relative;
+  height: 200rpx;
+}
+
+.avatar view {
+  position: absolute;
+  top: 50%;
+  left: 60rpx;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+}
+
+.avatar image{
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  border: 8rpx solid #fff;
+}
+
+.avatar text{
+  padding-left: 20rpx;
+  font-size: 30rpx;
+}
+
+.user-oper{
+  background-color: #fff;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.user-oper view{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 18rpx;
+  width: 50%;
+}
+
+.user-oper text{
+  font-size: 30rpx;
+}
+
+.other{
+  margin-top: 12rpx;
+  margin-bottom: 12rpx;
+}
