@@ -11,4 +11,9 @@ Page({
     })
 
   },
+  goToOrderSettlement(){
+    wx.navigateTo({
+      url: '/pages/orderSettlement/index'
+    })
+  }
 })

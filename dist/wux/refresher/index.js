@@ -90,21 +90,23 @@ Component({
                 className: 'wux-refresher--active wux-refresher--refreshing wux-refresher--refreshing-tail',
             })
         },
-        hide(){
+        /**
+         * 加载后隐藏动画
+         */
+        hide() {
             this.setData({
                 lClassName: 'wux-loader--hidden',
             })
         },
         /**
-         * 正在下拉
+         * 正在下拉或上拉
          * @param {Number} diffY 距离
          */
         move(diffY) {
             const style = `transition-duration: 0s; transform: translate3d(0, ${diffY}px, 0) scale(1);`
 
 
-            let c
-            let d
+            let c, d
             if (diffY > 0) {
                 if (diffY < this.data.distance) {
                     c = 'wux-refresher--visible'
@@ -116,16 +118,19 @@ Component({
                     style,
                     className,
                 })
-            } else if(diffY < 0 && this.data.noData === false) {
+            } else if (diffY < 0 && this.data.noData === false) {
                 if (Math.abs(diffY) < this.data.distance) {
                     d = 'wux-loader--hidden'
                 } else if (Math.abs(diffY) > this.data.distance) {
                     d = 'wux-loader--visible'
                 }
                 const lClassName = d
-                this.setData({
-                    lClassName
-                })
+                setTimeout(() => {
+                    this.setData({
+                        lClassName
+                    })
+                }, 200);
+
             }
         },
         /**
@@ -133,6 +138,12 @@ Component({
          */
         isRefreshing() {
             return this.data.className.indexOf('wux-refresher--refreshing') !== -1
+        },
+        /**
+         * 判断是否正在加载
+         */
+        isLoading() {
+            return this.data.lClassName.indexOf('wux-loader--visible') !== -1
         },
         /**
          * 获取触摸点坐标
@@ -170,29 +181,29 @@ Component({
                 setTimeout(() => this.deactivate(), 200)
             }, 200)
         },
-        finishLoadmore(){
-            if(this.data.noData === true){
-                this.setData({
-                    noData: true
-                })
-            }else{
+        /**
+         * 上拉加载完成后的函数
+         */
+        finishLoadmore(bool) {
+            if (bool === true) {
+                setTimeout(()=>{
+                    this.setData({
+                        noData: true,
+                        lClassName: 'wux-loader--end'
+                    })
+                },200)
+            } else {
                 setTimeout(() => {
                     this.requestAnimationFrame(this.hide)
                     setTimeout(() => this.deactivate(), 200)
                 }, 200)
             }
-            
-        },
-        endLoadmore(){
-            this.setData({
-                noData: true
-            })
         },
         /**
          * 手指触摸动作开始
          */
         bindtouchstart(e) {
-            if (this.isRefreshing()) return false
+            if (this.isRefreshing() || this.isLoading()) return false
 
             const p = this.getTouchPosition(e)
 
@@ -205,7 +216,7 @@ Component({
          * 手指触摸后移动
          */
         bindtouchmove(e) {
-            if (!this.start || this.isRefreshing()) return false
+            if (!this.start || this.isRefreshing() || this.isLoading()) return false
 
             const p = this.getTouchPosition(e)
 
@@ -213,22 +224,25 @@ Component({
             this.diffY = p.y - this.start.y
 
             if (this.diffY < 0) {
-                this.diffY = - Math.pow(Math.abs(this.diffY), 0.8)
+                this.diffY = -Math.pow(Math.abs(this.diffY), 0.8)
             } else {
                 this.diffY = Math.pow(this.diffY, 0.8)
             }
 
-            if (!this.activated && this.diffY > 0 && this.diffY > this.data.distance) {
-                this.activated = true
-                this.triggerEvent('pulling')
-            } else if (this.activated && this.diffY > 0 && this.diffY < this.data.distance) {
-                this.activated = false
-            }
-            else if (!this.activated && this.diffY < 0 && Math.abs(this.diffY) > this.data.distance) {
-                this.activated = true
-                this.triggerEvent('pulling')
-            } else if (!this.activated && this.diffY < 0 && Math.abs(this.diffY) < this.data.distance) {
-                this.activated = false
+            if (this.diffY > 0) {
+                if (!this.activated && this.diffY > this.data.distance) {
+                    this.activated = true
+                    this.triggerEvent('pulling')
+                } else if (this.activated && this.diffY < this.data.distance) {
+                    this.activated = false
+                }
+            } else if (this.diffY < 0 && this.data.noData === false) {
+                if (!this.activated && Math.abs(this.diffY) > this.data.distance) {
+                    this.activated = true
+                    this.triggerEvent('pulling')
+                } else if (this.activated && Math.abs(this.diffY) < this.data.distance) {
+                    this.activated = false
+                }
             }
 
             this.move(this.diffY)
@@ -237,9 +251,9 @@ Component({
          * 	手指触摸动作结束
          */
         bindtouchend(e) {
-            this.start = false
+            this.start = false 
 
-            if (this.isRefreshing()) return false
+            if (this.isRefreshing() || this.isLoading()) return false
 
             this.deactivate()
 
@@ -247,7 +261,7 @@ Component({
                 this.refreshing()
                 this.triggerEvent('refresh')
             } else if (this.diffY < 0 && Math.abs(this.diffY) >= this.data.distance) {
-                if(this.data.noData !== true){
+                if (this.data.noData !== true) {
                     this.triggerEvent('loadmore')
                 }
             }

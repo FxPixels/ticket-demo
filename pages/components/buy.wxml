@@ -43,7 +43,7 @@
       </view>
     </view>
 
-    <view class="btn" bind:tap="onSearchBus">
+    <view class="btn" bind:tap="goToTicketList">
       <wux-button block type="calm">查询班次</wux-button>
     </view>
   </view>

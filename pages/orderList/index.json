@@ -1,0 +1,10 @@
+{
+  "usingComponents": {
+    "wux-icon": "../../dist/wux/icon/index",
+    "van-tab": "../../dist/vant/tab/index",
+    "van-tabs": "../../dist/vant/tabs/index",
+    "wux-refresher": "../../dist/wux/refresher/index",
+    "wux-timeline": "../../dist/wux/timeline/index",
+    "wux-timeline-item": "../../dist/wux/timeline-item/index"
+  }
+}

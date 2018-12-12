@@ -15,7 +15,6 @@
     <view class="wux-loader {{lClassName}}">
         <view class="wux-loader__content">
             <text wx:if="{{noData === false}}" class="{{ refreshingIcon || 'wux-refresher__icon--refresher' }}"></text>
-            <!-- <view wx:if="{{noData === false}}" class="wux-loader__content">{{loadingText}}</view> -->
             <view wx:elif="{{noData === true}}">
                 {{loadNoDataText}}
             </view>

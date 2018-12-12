@@ -1,0 +1,30 @@
+<view>
+  <view></view>
+  <van-tabs active="{{ active }}" bind:change="onTabsChange" color="#FF6647" sticky="{{true}}" offset-top="{{0}}" scroll-top="{{scrollTop}}">
+    <van-tab title="全部"></van-tab>
+    <van-tab title="待付款"></van-tab>
+    <van-tab title="待乘车"></van-tab>
+  </van-tabs>
+  <view class="list">
+    <wux-refresher id="wux-refresher" bind:loadmore="onLoadmore" bind:refresh="onRefresh">
+      <view class="list">
+        <view class="item">
+          <view>
+            <text>2018-05-14 18:15 发车</text>
+            <text>交易完成</text>
+          </view>
+          <view class="">
+            <wux-timeline>
+              <wux-timeline-item content="广州滘口汽车站" />
+              <wux-timeline-item content="新和" />
+            </wux-timeline>
+            <view>
+              <!-- <view>粤A1235</view> -->
+              <view>1张</view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </wux-refresher>
+  </view>
+</view>

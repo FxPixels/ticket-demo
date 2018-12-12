@@ -28,6 +28,11 @@
   display: block;
 }
 
+.wux-loader--end {
+  visibility: visible;
+  display: block;
+}
+
 .wux-loader__content{
   position: absolute;
   width: 100%;

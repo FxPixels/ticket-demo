@@ -1,0 +1,29 @@
+.list{
+  margin-top: 10rpx;
+  padding: 3rpx 12rpx 12rpx 12rpx;
+}
+
+.item{
+  padding: 20rpx;
+  background-color: #fff;
+  height: 210rpx;
+  overflow: hidden;
+}
+
+.item>view:first-child{
+  font-size: 30rpx;
+  display: flex;
+  justify-content: space-between;
+}
+
+.item>view:last-child{
+  padding-top: 40rpx;
+  overflow: hidden;
+  display: flex;
+  justify-content: space-between;
+}
+
+.item>view:last-child>view{
+  font-size: 30rpx;
+  text-align: right;
+}

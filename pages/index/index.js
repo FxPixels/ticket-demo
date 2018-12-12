@@ -50,12 +50,17 @@ Page({
       title: this.data.title[Number(index)].name
     })
   },
-  onSearchBus() {
+  goToTicketList() {
     // this.setData({
     //   spinning: !this.data.spinning,
     // })
     wx.navigateTo({
       url: '/pages/ticketList/index'
+    })
+  },
+  goToOrderList(){
+    wx.navigateTo({
+      url: '/pages/orderList/index'
     })
   },
   onSelectAddress(){

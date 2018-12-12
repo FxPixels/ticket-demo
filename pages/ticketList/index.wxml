@@ -4,7 +4,7 @@
   <text>后一天</text>
 </view>
 <view class="list">
-  <view class="item">
+  <view class="item" bind:tap="goToOrderSettlement">
     <view class="info-1">
       <text>07:30</text>
       <view>

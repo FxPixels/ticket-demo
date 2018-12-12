@@ -1,0 +1,42 @@
+<view>
+  <view class="header">
+    <text>2018-12-12 今天 09:50</text>
+    <text>发车</text>
+  </view>
+  <view class="info">
+    <view class="address">广州滘口汽车站 ➝ 从化</view>
+    <view class="bus">粤A1502 约2.2小时 大型座席</view>
+    <view class="intro">途经：xxxx->xxxxxx->xxx->xxxxxx->xxx</view>
+  </view>
+  <view class="price">
+    <view bind:tap="showIntro">乘车、退票说明</view>
+    <view>
+      <text>票价：</text>
+      <text>￥55</text>
+    </view>
+  </view>
+  <view class="passenger">
+    <view class="none">
+      <view>
+        <wux-icon type="md-add-circle-outline" size="20" color="#43B213"/>
+        <text>添加旅客</text>
+      </view>
+    </view>
+    <view class="has">
+      <view>
+        <view>冯培成</view>
+        <view>18826492921</view>
+      </view>
+      <view><wux-icon type="ios-trash" size="22" color="#ABABAB"/></view>
+    </view>
+  </view>
+  <view class="operation">
+    <view>合计：<text>￥58</text></view>
+    <view>提交订单</view>
+  </view>
+
+  <wux-popup closable visible="{{ visible }}" title="说明" bind:close="onClose" maskClosable="{{true}}">
+    <view>11s2d</view>
+    <view slot="footer" class="popup__button" bind:tap="onClose">OK</view>
+  </wux-popup>
+</view>

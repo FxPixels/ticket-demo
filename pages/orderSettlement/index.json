@@ -1,0 +1,10 @@
+{
+  "usingComponents": {
+    "wux-icon": "../../dist/wux/icon/index",
+    "wux-button": "../../dist/wux/button/index",
+    "wux-cell-group": "../../dist/wux/cell-group/index",
+    "wux-cell": "../../dist/wux/cell/index",
+    "wux-button": "../../dist/wux/button/index",
+    "wux-popup": "../../dist/wux/popup/index"
+  }
+}

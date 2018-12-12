@@ -11,7 +11,7 @@
         <wux-icon type="md-contacts" size="22" color="#18ACCF" />
         <text>常用乘客</text>
       </view>
-      <view>
+      <view bind:tap="goToOrderList">
         <wux-icon type="md-checkbox-outline" size="22" color="#18ACCF" />
         <text>订单</text>
       </view>
