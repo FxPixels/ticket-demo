@@ -1,0 +1,22 @@
+<view>
+  <view class="list">
+    <view class="item">
+      <view>
+        <view>冯培成</view>
+        <view>手机号 18826492921</view>
+      </view>
+      <view>
+        <view bind:tap="revisePassengers">
+          编辑
+        </view>
+        <view bind:tap="deletePassengers">
+          删除
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="add" bind:tap="goToAddPassengers">
+    <wux-icon type="md-person-add" size="16" color="#18ACCF" />
+    <text>添加乘客</text>
+  </view>
+</view>

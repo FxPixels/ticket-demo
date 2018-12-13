@@ -20,9 +20,11 @@ Page({
     })
   },
   onRefresh(){
+    console.log('刷新')
     $stopWuxRefresher()
   },
   onLoadmore(){
+    console.log('加载')
       $stopWuxLoader(true)
   }
 })

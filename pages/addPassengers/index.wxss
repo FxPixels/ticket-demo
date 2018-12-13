@@ -1,0 +1,23 @@
+.operation{
+  display: flex;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.operation view{
+  width: 50%;
+  text-align: center;
+  padding: 24rpx;
+  font-size: 30rpx;
+}
+
+.operation view:first-child{
+  color: #FF6647;
+  background-color: #fff;
+}
+
+.operation view:last-child{
+  background-color: #FF6647;
+  color: #fff;
+}

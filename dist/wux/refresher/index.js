@@ -105,32 +105,17 @@ Component({
         move(diffY) {
             const style = `transition-duration: 0s; transform: translate3d(0, ${diffY}px, 0) scale(1);`
 
-
-            let c, d
             if (diffY > 0) {
-                if (diffY < this.data.distance) {
-                    c = 'wux-refresher--visible'
-                } else if (diffY > this.data.distance) {
-                    c = 'wux-refresher--active'
-                }
-                const className = c
                 this.setData({
                     style,
-                    className,
+                    className: diffY < this.data.distance ? 'wux-refresher--visible' : 'wux-refresher--active',
                 })
             } else if (diffY < 0 && this.data.noData === false) {
                 if (Math.abs(diffY) < this.data.distance) {
-                    d = 'wux-loader--hidden'
-                } else if (Math.abs(diffY) > this.data.distance) {
-                    d = 'wux-loader--visible'
-                }
-                const lClassName = d
-                setTimeout(() => {
                     this.setData({
-                        lClassName
+                        lClassName: 'wux-loader--hidden'
                     })
-                }, 200);
-
+                }
             }
         },
         /**
@@ -260,10 +245,12 @@ Component({
             if (this.diffY > 0 && Math.abs(this.diffY) >= this.data.distance) {
                 this.refreshing()
                 this.triggerEvent('refresh')
-            } else if (this.diffY < 0 && Math.abs(this.diffY) >= this.data.distance) {
-                if (this.data.noData !== true) {
-                    this.triggerEvent('loadmore')
-                }
+            } else if (this.diffY < 0 && Math.abs(this.diffY) >= this.data.distance && this.data.noData !== true) {
+                this.setData({
+                    lClassName: 'wux-loader--visible'
+                })
+                this.triggerEvent('loadmore')
+
             }
         },
     },

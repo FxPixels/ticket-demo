@@ -1,8 +1,10 @@
 {
   "pages":[
+    "pages/addPassengers/index",
     "pages/orderList/index",
-    "pages/orderSettlement/index",
     "pages/index/index",
+    "pages/orderSettlement/index",
+    "pages/passengersList/index",
     "pages/ticketList/index",
     "pages/logs/logs"
   ],

@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "wux-icon": "../../dist/wux/icon/index",
+    "wux-cell-group": "../../dist/wux/cell-group/index",
+    "wux-cell": "../../dist/wux/cell/index",
+    "wux-input": "../../dist/wux/input/index",
+    "wux-toptips": "../../dist/wux/toptips/index"
+  }
+}
